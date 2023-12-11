@@ -5,10 +5,10 @@
 <g:form controller="scrapedData" action="index">
     <p>
         <label>Application Group or Area</label>
-        <g:textField name="searchedWord" type="text" placeholder="Place Holder Text Field 1" value='${params.searchedWord}' />
+        <g:textField name="searchedWord" type="text" placeholder="Search word" value='${params.searchedWord}' />
     </p>
 
     <p>
-        <input type="submit" value="Submit Form" id="FormButton" >
+        <input type="submit" value="Search" id="FormButton" >
     </p>
 </g:form>

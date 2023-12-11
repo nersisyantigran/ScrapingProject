@@ -23,8 +23,8 @@ class ScrapedDataController {
     }
     def searchResults(Integer max) {
         def data = webScrapService?.scrapChartDataFromStaff()
-        def keysArr = data.keysArr
-        def valuesArr = data.valuesArr
+        def keysArr = data.keysArr.toString()
+        def valuesArr = data.valuesArr.toString()
         respond scrapedDataService.list(params), model:[scrapedDataCount: scrapedDataService.count(), keysArr:keysArr, valuesArr:valuesArr]
     }
 

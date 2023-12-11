@@ -23,31 +23,33 @@
     $(document).ready(function () {
 
         const ctx = document.getElementById('myChart');
-        var keysArray = ${raw(arr1)};
-
-
-        console.log("keysArray = "+keysArray);
+        var keysArray = "${raw(keysArr)}";
+        keysArray = keysArray.replace("[","").replace("]","").split(",")
+        var valuesArray = "${raw(valuesArr)}";
+        valuesArray = valuesArray.replace("[","").replace("]","").split(",")
+        console.log("keysArray = "+  keysArray);
+        console.log("valuesArray = "+  valuesArray);
         // console.log("valuesArray = "+valuesArray.join('').replace(/\\u002c/g, ','));
 
 
-        // new Chart(ctx, {
-        //     type: 'bar',
-        //     data: {
-        //         labels: keysArray,
-        //         datasets: [{
-        //             label: '# of Votes',
-        //             data: valuesArray,
-        //             borderWidth: 1
-        //         }]
-        //     },
-        //     options: {
-        //         scales: {
-        //             y: {
-        //                 beginAtZero: true
-        //             }
-        //         }
-        //     }
-        // // });
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: keysArray,
+                datasets: [{
+                    label: '# of Votes',
+                    data: valuesArray,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
 });
 </g:javascript>
 </body>
