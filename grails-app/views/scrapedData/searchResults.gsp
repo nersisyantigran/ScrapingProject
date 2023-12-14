@@ -14,14 +14,28 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;*/
 }
+ul {
+    list-style-type: none;
+    font-weight: bold;
+}
+#content {
+    background-image: url('https://hrmpractice.com/wp-content/uploads/2018/05/Job-Analysis-Tools.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 </style>
 <body>
-<select name="chartSelect" class="form-select" style="margin-left:50px; margin-top: 20px; width: 50px; height: 20px;" id="chartSelect">
-    <option value="">Select type</option>
-    <option value="bar">bar</option>
-    <option value="pie">pie</option>
-</select>
+<div class="bg-secondary" style="background-color: cadetblue;height: 30px;">
+    <select name="chartSelect" class="form-select" style="margin-left:50px; margin-top: 20px; width: 50px; height: 20px;" id="chartSelect">
+        <option value="">Select type</option>
+        <option value="bar">bar</option>
+        <option value="pie">pie</option>
+    </select>
+</div>
 
+
+<div id="content" style="text-align: center;">
+</div>
 
 <div>
     <canvas id="barChart"></canvas>
@@ -29,11 +43,16 @@ body {
 <div  style="height: 800px; width: 800px;">
     <canvas id="pieChart"></canvas>
 </div>
-
 <g:javascript>
     $(document).ready(function () {
          $("#barChart").hide();
          $("#pieChart").hide();
+         var keysArray = "${raw(keysArr)}";
+        keysArray = keysArray.replace("[","").replace("]","").split(",")
+        var valuesArray = "${raw(valuesArr)}";
+        valuesArray = valuesArray.replace("[","").replace("]","").split(",")
+        var displayData = '<ul>';
+
         function getRandomColor() {
           var letters = '0123456789ABCDEF';
           var color = '#';
@@ -43,16 +62,16 @@ body {
           return color;
         }
         var barColors = [];
-        for (var i = 0; i < 51; i++) {
+        for (var i = 0; i < keysArray.length; i++) {
           barColors.push(getRandomColor());
-        }
 
-        var keysArray = "${raw(keysArr)}";
-        keysArray = keysArray.replace("[","").replace("]","").split(",")
-        var valuesArray = "${raw(valuesArr)}";
-        valuesArray = valuesArray.replace("[","").replace("]","").split(",")
-        // console.log("keysArray = "+  keysArray);
-        // console.log("valuesArray = "+  valuesArray);
+          displayData += '<li>' + keysArray[i] + ': ' + valuesArray[i] + '</li>';
+        }
+        displayData += '</ul>';
+            document.getElementById('content').innerHTML = displayData;
+
+        $("#content").innerHTML = displayData;
+
                                 new Chart("barChart", {
                             type: 'bar',
                             data: {
@@ -97,12 +116,15 @@ body {
                     if (selected == 'bar'){
                         $("#barChart").show();
                         $("#pieChart").hide();
+                        $("#content").hide();
                     } else if (selected == 'pie'){
                         $("#barChart").hide();
+                        $("#content").hide();
                         $("#pieChart").show();
                     } else if (selected == ''){
                          $("#barChart").hide();
                         $("#pieChart").hide();
+                        $("#content").show();
                     }
 
         });
