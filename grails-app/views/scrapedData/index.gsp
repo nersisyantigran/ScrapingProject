@@ -4,6 +4,8 @@ data = data
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
         <style>
         .hb_list_item {
             width: 200px;
@@ -18,8 +20,17 @@ data = data
         <asset:javascript src="application.js"/>
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
-    <body>
-    <div style="display: -webkit-inline-box;">
+    <body style="background-image: linear-gradient(to right, rgba(255,0,0,0), #808080);
+    ">
+    <nav class="nav  bg-secondary " style="background-color: cadetblue;">
+        <div class="container-fluid">
+            <g:link  controller="scrapedData" action="index" class="btn btn-secondary ">Home</g:link>
+
+            <g:link class="btn btn-secondary ">Data graphic</g:link>
+            <g:link controller="scrapedData" action="searchResults" class="btn btn-secondary ">Search job</g:link>
+        </div>
+    </nav>
+    <div style="display: -webkit-inline-box; margin-top: 25px;">
 ${raw("""
     ${data}
             """)}

@@ -18,29 +18,37 @@ ul {
     list-style-type: none;
     font-weight: bold;
 }
-#content {
-    background-image: url('https://hrmpractice.com/wp-content/uploads/2018/05/Job-Analysis-Tools.jpg');
+#leftBg {
+    background-image: url('https://i0.wp.com/iosolutions.com/wp-content/uploads/2017/02/aboutbackground.jpg?resize=700%2C450&ssl=1');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 </style>
 <body>
-<div class="bg-secondary" style="background-color: cadetblue;height: 30px;">
-    <select name="chartSelect" class="form-select" style="margin-left:50px; margin-top: 20px; width: 50px; height: 20px;" id="chartSelect">
-        <option value="">Select type</option>
-        <option value="bar">bar</option>
-        <option value="pie">pie</option>
-    </select>
-</div>
+<nav class="nav  bg-secondary " style="background-color: cadetblue;">
+    <div class="container-fluid">
+        <g:link  controller="scrapedData" action="index" class="btn btn-secondary ">Home</g:link>
 
+        <g:link class="btn btn-secondary ">Data graphic</g:link>
+        <g:link controller="scrapedData" action="searchResults" class="btn btn-secondary ">Search job</g:link>
+    </div>
+</nav>
 
-<div id="content" style="text-align: center;">
+<select name="chartSelect" class="form-select" style="margin-left:10px; width: 50px; height: 20px; position: fixed;" id="chartSelect">
+    <option value="">Select type</option>
+    <option value="bar">bar</option>
+    <option value="pie">pie</option>
+</select>
+
+<div id="content" style="text-align: left; margin-left: 100px; width: 100%;
+background-image: linear-gradient(to right, rgba(255,0,0,0), #808080);
+">
 </div>
 
 <div>
     <canvas id="barChart"></canvas>
 </div>
-<div  style="height: 800px; width: 800px;">
+<div  style="height: 800px; width: 800px; margin-left: 300px;">
     <canvas id="pieChart"></canvas>
 </div>
 <g:javascript>
