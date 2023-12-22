@@ -28,7 +28,6 @@ class WebScrapService {
             keysArr.add(it.childNodes[1].toString().replaceAll("<en>\n","").replaceAll("\n</en>",""))
             valuesArr.add(it.childNodes[2].attributes.vals[0])
         }
-//        def data = Jsoup.connect(url).get().getElementsByClass("web_item_card hs_job_list_item")
         return [keysArr:keysArr,valuesArr:valuesArr]
     }
 }
