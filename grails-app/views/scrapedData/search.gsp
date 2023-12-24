@@ -1,6 +1,7 @@
 <style>
     body {
-        background-image: linear-gradient(to right, rgba(255,0,0,0), #808080);
+        background-image: url("https://www.life.gov.sg/img/wasj/banner_support-for-your-job-search.png");
+        background-repeat: no-repeat;
 
     }
 </style>
@@ -18,13 +19,17 @@
 <br>
 <br>
 
-<g:form controller="scrapedData" action="searchResults">
-    <div class="align-content-center">
-        <p>
-            <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0" id="FormButton" style="margin-right: 25px; margin-left: 25px;">
-            <g:textField name="searchedWord" type="text" placeholder="Search word" value='${params.searchedWord}' />
-        </p>
+<div style="margin-left: 800px;">
+    <span>    Աշխատանքի որոնում </span><br><br>
+    <g:form controller="scrapedData" action="searchResults">
+        <div class="align-content-center">
+            <p>
+                <input type="submit" value="Փնտրել" class="btn btn-success my-2 my-sm-0" id="FormButton" style="margin-right: 25px; margin-left: 25px;">
+                <g:textField name="searchedWord" type="text" placeholder="Փնտրվող բառ" value='${params.searchedWord}' />
+            </p>
 
-    </div>
+        </div>
 
-</g:form>
+    </g:form>
+</div>
+

@@ -9,19 +9,9 @@
     <title><g:message code="default.list.label" args="[entityName]"/></title>
 </head>
 <style>
-body {
-    /*background-image: url('https://cdto.work/wp-content/uploads/2021/10/2f5d6e2eac78ae12ca9170c76d4262b2.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;*/
-}
 ul {
     list-style-type: none;
     font-weight: bold;
-}
-#leftBg {
-    background-image: url('https://i0.wp.com/iosolutions.com/wp-content/uploads/2017/02/aboutbackground.jpg?resize=700%2C450&ssl=1');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
 }
 </style>
 <body>
@@ -32,16 +22,30 @@ ul {
         <g:link  controller="scrapedData" action="search" class="btn btn-secondary ">Search job</g:link>
     </div>
 </nav>
-<select name="chartSelect" class="form-select" style="margin-left:10px; width: 50px; height: 20px; position: fixed;" id="chartSelect">
-    <option value="">Select type</option>
-    <option value="bar">bar</option>
-    <option value="pie">pie</option>
-</select>
-
-<div id="content" style="text-align: left; margin-left: 100px; width: 100%;
-background-image: linear-gradient(to right, rgba(255,0,0,0), #808080);
-">
+<div style=" position: fixed; margin-left:10px; width: 50px; ">
+    <label for="chartSelect">Ցուցադրման ձևը</label>
+    <select name="chartSelect" class="form-select" style="margin-left:10px; width: 50px; height: 20px;" id="chartSelect">
+        <option value="">Select type</option>
+        <option value="bar">bar</option>
+        <option value="pie">pie</option>
+    </select>
 </div>
+
+<div style="position: relative">
+    <div style=" position: fixed; margin-left:1400px; width: 50px; ">
+        <label for="chartSelect">Տվյալների հավաքագրում ըստ՝ ձևը</label>
+        <select name="byWhat" class="form-select" style="margin-left:10px; width: 50px; height: 20px;" id="byWhat">
+            <option value="">Select type</option>
+            <option value="categories">Կատեգորիաների</option>
+            <option value="job_city">Քաղաքների</option>
+        </select>
+    </div>
+</div>
+
+<div id="content" style="text-align: left; margin-left: 100px; width: 100%;display: flex;">
+</div>
+
+
 
 <div>
     <canvas id="barChart"></canvas>
@@ -51,29 +55,41 @@ background-image: linear-gradient(to right, rgba(255,0,0,0), #808080);
 </div>
 <g:javascript>
     $(document).ready(function () {
-         $("#barChart").hide();
-         $("#pieChart").hide();
-         var keysArray = "${raw(keysArr)}";
+
+         $("#byWhat").change(function(){
+              var selectedValue = $(this).val();
+
+            // Check if a valid option is selected
+            if (selectedValue !== "") {
+                // Redirect to the 'dataGraphic' action with the selected value
+                window.location.href = "${createLink(controller: 'scrapedData', action: 'dataGraphic')}" + "?byWhat=" + selectedValue;
+            }
+
+    });
+    $("#barChart").hide();
+    $("#pieChart").hide();
+    var keysArray = "${raw(keysArr)}";
         keysArray = keysArray.replace("[","").replace("]","").split(",")
         var valuesArray = "${raw(valuesArr)}";
         valuesArray = valuesArray.replace("[","").replace("]","").split(",")
         var displayData = '<ul>';
 
-        function getRandomColor() {
-          var letters = '0123456789ABCDEF';
-          var color = '#';
-          for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-          }
-          return color;
-        }
-        var barColors = [];
-        for (var i = 0; i < keysArray.length; i++) {
-          barColors.push(getRandomColor());
+function getRandomColor() {
+var letters = '0123456789ABCDEF';
+var color = '#';
+for (var i = 0; i < 6; i++) {
+color += letters[Math.floor(Math.random() * 16)];
+}
+return color;
+}
+var barColors = [];
+for (var i = 0; i < keysArray.length; i++) {
+barColors.push(getRandomColor());
 
-          displayData += '<li>' + keysArray[i] + ': ' + valuesArray[i] + '</li>';
-        }
-        displayData += '</ul>';
+displayData += '<li>' + keysArray[i] + ': ' + valuesArray[i] + '</li>';
+}
+displayData += '</ul>';
+displayData += "<div>                <img src='https://pyjamahr.com/wp-content/uploads/2021/12/shutterstock_1814645042_ys5h7t.jpg'> </div>";
             document.getElementById('content').innerHTML = displayData;
 
         $("#content").innerHTML = displayData;
