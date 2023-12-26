@@ -92,19 +92,19 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8">
                         <div class="mb-4">
-                            <h3>Sign In</h3>
+                            <h3>Մուտք</h3>
                             <p class="mb-4">Մուտք գործեք ձեր անձնական էջ.</p>
                         </div>
                         <g:form controller="scrapedData" action="index" method="post">
                             <div class="form-group first">
-                                <label for="username">Username</label>
+                                <label for="username">Օգտանուն</label>
                                 <input type="text" class="form-control" id="username">
                             </div>
                             <div class="form-group last mb-4">
-                                <label for="password">Password</label>
+                                <label for="password">Գաղտնաբառ</label>
                                 <input type="password" class="form-control" id="password">
                             </div>
-                            <input id="login" type="submit" value="Log In" class="btn btn-block btn-primary">
+                            <input id="login" type="submit" value="Մուտք" class="btn btn-block btn-primary">
                         </g:form>
                     </div>
                 </div>

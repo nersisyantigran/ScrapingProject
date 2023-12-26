@@ -15,27 +15,21 @@ ul {
 }
 </style>
 <body>
-<nav class="nav  bg-secondary " style="background-color: cadetblue;">
-    <div class="container-fluid">
-        <g:link  controller="scrapedData" action="index" class="btn btn-secondary ">Home</g:link>
-        <g:link  controller="scrapedData" action="dataGraphic" class="btn btn-secondary ">Data graphic</g:link>
-        <g:link  controller="scrapedData" action="search" class="btn btn-secondary ">Search job</g:link>
-    </div>
-</nav>
+    <g:render template="navBar"/>
+
 <div style=" position: fixed; margin-left:10px; width: 50px; ">
     <label for="chartSelect">Ցուցադրման ձևը</label>
     <select name="chartSelect" class="form-select" style="margin-left:10px; width: 50px; height: 20px;" id="chartSelect">
-        <option value="">Select type</option>
-        <option value="bar">bar</option>
-        <option value="pie">pie</option>
+        <option value="">Տեքստային</option>
+        <option value="bar">Սյունյակային</option>
+        <option value="pie">Շրջանաձև</option>
     </select>
 </div>
 
 <div style="position: relative">
     <div style=" position: fixed; margin-left:1400px; width: 50px; ">
-        <label for="chartSelect">Տվյալների հավաքագրում ըստ՝ ձևը</label>
+        <label for="chartSelect" style="width: 300px;">Տվյալների հավաքագրում ըստ՝ </label>
         <select name="byWhat" class="form-select" style="margin-left:10px; width: 50px; height: 20px;" id="byWhat">
-            <option value="">Select type</option>
             <option value="categories">Կատեգորիաների</option>
             <option value="job_city">Քաղաքների</option>
         </select>

@@ -169,13 +169,8 @@
 </head>
 <body style="background-image: linear-gradient(to right, rgba(255,0,0,0), #808080);
 ">
-<nav class="nav  bg-secondary " style="background-color: cadetblue;">
-    <div class="container-fluid">
-        <g:link  controller="scrapedData" action="index" class="btn btn-secondary ">Home</g:link>
-        <g:link  controller="scrapedData" action="dataGraphic" class="btn btn-secondary ">Data graphic</g:link>
-        <g:link  controller="scrapedData" action="search" class="btn btn-secondary ">Search job</g:link>
-    </div>
-</nav>
+<g:render template="navBar"/>
+
 <div style="display: -webkit-inline-box; margin-top: 25px;">
     ${raw("""
     ${data}
